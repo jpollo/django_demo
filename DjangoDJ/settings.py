@@ -1,3 +1,4 @@
+#encoding=utf-8
 """
 Django settings for DjangoDJ project.
 
@@ -80,8 +81,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+# settting.py所在的路径
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
 
+STATIC_URL = '/static/'
+STATIC_DIRS = (
+    ('css',os.path.join(STATIC_ROOT,'css')),
+    ('js',os.path.join(STATIC_ROOT,'js')),
+    ('img',os.path.join(STATIC_ROOT,'img')),
+
+)
+
+# 模板文件配置
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(PROJECT_PATH, 'templates'),
 )
